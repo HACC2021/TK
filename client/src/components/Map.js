@@ -5,7 +5,7 @@ function Map({ center, zoom }) {
         <div className="map">
             <GoogleMapReact
                 // DON'T PUSH TO PRODUCTION NEED TO CHANGE API KEY TO ENVIRONMENT VARIABLE
-                bootstrapURLKeys={{ key: 'AIzaSyA8gq3Vhq9KBbCIr95QUHGgD7iBqiitgYs' }}
+                bootstrapURLKeys={{ key: '' }}
                 center={ center }
                 defaultZoom={ zoom }
             >
