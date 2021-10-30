@@ -3,17 +3,22 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import usersRoutes from './routes/users.js';
+import "dotenv/config";
+//import env from './.env';
 
+// require('dotenv').config({ path: '../.env' });
 const app = express();
+const PORT = process.env.PORT;
+console.log("Port is: " + PORT);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 // Database
-mongoose.connect('mongodb://localhost:27017', {
-    user: "test",
-    pass: "password",
+mongoose.connect(`mongodb://${process.env.MONGO_ROOT_USERNAME}:${process.env.MONGO_ROOT_PASSWORD}@mongodb`, {
+    // user: process.env.MONGO_ROOT_USERNAME,
+    // pass: process.env.MONGO_ROOT_PASSWORD,
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 });
@@ -24,7 +29,7 @@ db.once('open', () => {
 	console.log("Connected to MongoDB database...");
 });
 
-app.listen(3100, () => console.log("Server is running"));
+app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV} mode on ${PORT}`));
 
 app.use('/users', usersRoutes);
 
