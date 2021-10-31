@@ -3,10 +3,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import usersRoutes from './routes/users.js';
-import "dotenv/config";
-//import env from './.env';
+import dotenv from 'dotenv';
 
-// require('dotenv').config({ path: '../.env' });
+dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT;
 console.log("Port is: " + PORT);

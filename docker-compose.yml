@@ -16,6 +16,8 @@ services:
          - 5000:5000
       depends_on:
          - mongodb
+      env_file:
+         - ./.env
       environment:
          NODE_ENV: ${NODE_ENV}
          MONGO_URI: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb
