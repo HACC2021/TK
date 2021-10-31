@@ -1,4 +1,5 @@
 import GoogleMapReact from 'google-map-react';
+import LocationMarker from './LocationMarker';
 
 function Map({ center, zoom, defaultCenter }) {
     return (
@@ -10,7 +11,7 @@ function Map({ center, zoom, defaultCenter }) {
                 center={center}
                 defaultZoom={zoom}
             >
-
+                {center ? <LocationMarker icon="mdi:map-marker-account" lat={center.lat} lng={center.lng} /> : null }
             </GoogleMapReact>
         </div>
     )

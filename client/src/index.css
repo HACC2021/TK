@@ -7,3 +7,10 @@ body {
     height: 80vh;
     position: relative;
 }
+
+.location-icon {
+    font-size: 2rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: red;
+}
