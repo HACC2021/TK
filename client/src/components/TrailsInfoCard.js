@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 
 function TrailsInfoCard() {
     return (
-        <Card border="success" className="trails-info-card">
+        <Card className="trails-info-card">
             <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Text>

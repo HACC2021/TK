@@ -25,6 +25,7 @@ body {
 .trails-info-card {
     margin-bottom: 1rem;
     width: 100%;
+    border-color: #D2E459;
 }
 .trails-info-card:hover {
     transition: all 0.2s ease-out;
@@ -32,4 +33,8 @@ body {
     top: -4px;
     border: 1px solid #cccccc;
     background-color: white;
-  }
+}
+
+.navbar {
+    background: #D2E459;
+}
