@@ -14,3 +14,7 @@ body {
     transform: translate(-50%, -50%);
     color: red;
 }
+
+.trails-info-card {
+    width: 5rem;
+}

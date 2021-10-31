@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Map from "../components/Map";
+import TopRatedTrails from "../components/TopRatedTrails";
 
 function Landing() {
 
@@ -19,6 +20,7 @@ function Landing() {
     return (
         <div>
             <Map center={location} />
+            <TopRatedTrails />
         </div>
     )
 }
