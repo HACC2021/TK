@@ -53,6 +53,8 @@ services:
          - 3000:3000
       depends_on:
          - express-api
+      env_file:
+         - ./.env
       networks:
          - hacc-app
    
