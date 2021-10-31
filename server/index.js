@@ -4,16 +4,9 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import usersRoutes from './routes/users.js';
 import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
-// import { dirname } from 'path';
-// import "dotenv/config";
-//import env from './.env';
-// const path = require('path');
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.join(__dirname, '../.env') });
-// dotenv.config();
+dotenv.config();
+
 const app = express();
 const PORT = process.env.PORT;
 console.log("Port is: " + PORT);
