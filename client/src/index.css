@@ -37,4 +37,15 @@ body {
 
 .navbar {
     background: #D2E459;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-brand {
+    font-family: Shadows Into Light;
+    font-size: 1.5rem;
+}
+
+.navbar-item {
+    font-size: 1.5rem;
 }
