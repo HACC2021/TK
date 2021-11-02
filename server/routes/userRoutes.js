@@ -10,5 +10,6 @@ router.get('/', async (req, res) => {
     res.json(users);
 });
 
+router.post('/new', registerUser);
 
 export default router;
