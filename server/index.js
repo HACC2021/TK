@@ -2,12 +2,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import usersRoutes from './routes/users.js';
+import usersRoutes from './routes/userRoutes.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
 
 const app = express();
+app.use(express.json);
 const PORT = process.env.PORT;
 console.log("Port is: " + PORT);
 
