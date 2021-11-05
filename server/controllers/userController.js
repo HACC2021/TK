@@ -2,7 +2,33 @@ import asyncHandler from "express-async-handler";
 import User from "../models/User.js";
 import { generateToken } from "../utils/generateToken.js";
 
-const registerUser = asyncHandler(async (req, res) => {
+//@route    POST /users/login
+//@desc     Authenticate the user
+//@access   Public
+const authenticate = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    const currUser = await User.findOne({email});
+
+    if (currUser && (await currUser.matchPassword(password))) {
+        res.json({
+            _id: currUser._id,
+            firstName: currUser.firstName,
+            lastName: currUser.lastName,
+            username: currUser.username,
+            email: currUser.email,
+            token: generateToken(currUser._id),
+        })
+    } else {
+        res.status(401);
+        throw new Error("Email or password is incorrect.");
+    }
+});
+
+//@route    POST /users/register
+//@desc     Register user
+//@access   Public
+const register = asyncHandler(async (req, res) => {
     const {firstName, lastName, username, email, password} = req.body;
 
     const userExists = await User.findOne({email});
@@ -35,4 +61,33 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 });
 
-export { registerUser };
+//@route    GET /users/profile
+//@desc     Get the current user profile
+//@access   Private
+const getUserProfile = asyncHandler(async (req, res) => {
+    const currUser = await User.findById(req.user._id);
+
+    if (currUser) {
+        currUser.firstName = req.body.firstName || currUser.firstName;
+        currUser.lastName = req.body.lastName || currUser.lastName;
+        currUser.username = req.body.username || currUser.username;
+        currUser.email = req.body.email || currUser.email;
+        if (req.body.password) currUser.password = req.body.password;
+
+        const updatedUser = await user.save();
+
+        res.json({
+            _id: updatedUser._id,
+            firstName: updatedUser.firstName,
+            lastName: updatedUser.lastName,
+            username: updatedUser.username,
+            email: updatedUser.email,
+            token: generateToken(updatedUser._id),
+        });
+    } else {
+        res.status(404);
+        throw new Error("User Not Found.");
+    }
+});
+
+export { authenticate, register, getUserProfile };
