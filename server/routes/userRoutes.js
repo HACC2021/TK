@@ -1,5 +1,6 @@
 import express from 'express';
-import { registerUser } from '../controllers/userController.js';
+import { authenticate, getUserProfile, register } from '../controllers/userController.js';
+import { validateToken } from '../middleware/authenticationMiddleware.js';
 import User from '../models/User.js';
 
 const router = express.Router();
@@ -10,6 +11,9 @@ router.get('/', async (req, res) => {
     res.json(users);
 });
 
-router.post('/new', registerUser);
+router.post('/register', register);
+router.post('/login', authenticate);
+router.route('/profile').post(validateToken, getUserProfile);
+
 
 export default router;
