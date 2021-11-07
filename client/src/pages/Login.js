@@ -1,7 +1,8 @@
 import React from 'react';
  import { useFormik } from 'formik';
  import Container from 'react-bootstrap/Container';
- 
+ import Axios from 'axios';
+
  const validate = values => {
    const errors = {};
 
@@ -24,7 +25,9 @@ import React from 'react';
      },
      validate,
      onSubmit: values => {
-       alert(JSON.stringify(values, null, 2));
+       Axios.post('http://localhost:5000/users/login', {username: values.username, password: values.password}).then(response => {
+        console.log(response);
+       });
      },
    });
    return (
@@ -40,7 +43,9 @@ import React from 'react';
                 value={formik.values.username}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+                   {formik.touched.username && formik.errors.username ? (
+         <div>{formik.errors.username}</div>
+       ) : null}
 
             <label htmlFor="password">Password</label>
             <input
@@ -51,7 +56,9 @@ import React from 'react';
                 value={formik.values.password}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+                {formik.touched.password && formik.errors.password ? (
+                    <div>{formik.errors.password}</div>
+                ) : null}
         
             <button type="submit">Login</button>
             </form>

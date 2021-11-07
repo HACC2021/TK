@@ -68,7 +68,9 @@ import React from 'react';
                 value={formik.values.email}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+       {formik.touched.email && formik.errors.email ? (
+         <div>{formik.errors.email}</div>
+       ) : null}
 
             <label htmlFor="username">Username</label>
             <input
@@ -79,7 +81,9 @@ import React from 'react';
                 value={formik.values.username}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.username ? <div>{formik.errors.username}</div> : null}
+       {formik.touched.username && formik.errors.username ? (
+         <div>{formik.errors.username}</div>
+       ) : null}
 
             <label htmlFor="firstName">First Name</label>
             <input
@@ -90,7 +94,9 @@ import React from 'react';
                 value={formik.values.firstName}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+       {formik.touched.firstName && formik.errors.firstName ? (
+         <div>{formik.errors.firstName}</div>
+       ) : null}
         
             <label htmlFor="lastName">Last Name</label>
             <input
@@ -101,7 +107,9 @@ import React from 'react';
                 value={formik.values.lastName}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+       {formik.touched.lastName && formik.errors.lastName ? (
+         <div>{formik.errors.lastName}</div>
+       ) : null}
 
             <label htmlFor="password">Password</label>
             <input
@@ -112,7 +120,9 @@ import React from 'react';
                 value={formik.values.password}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.password ? <div>{formik.errors.password}</div> : null}
+       {formik.touched.password && formik.errors.password ? (
+         <div>{formik.errors.password}</div>
+       ) : null}
 
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
@@ -123,7 +133,9 @@ import React from 'react';
                 value={formik.values.confirmPassword}
                 onBlur={formik.handleBlur}
             />
-            {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
+       {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
+         <div>{formik.errors.confirmPassword}</div>
+       ) : null}
         
             <button type="submit">Register</button>
             </form>
