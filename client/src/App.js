@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/ProtectedRoute';
+import UnprotectedRoute from './components/UnprotectedRoute';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
@@ -14,8 +15,8 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Landing} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <UnprotectedRoute path="/login" component={Login} />
+          <UnprotectedRoute path="/register" component={Register} />
           <ProtectedRoute path="/profile" component={Profile} />
 
           <Route path='*'><Redirect to='/' /></Route>
