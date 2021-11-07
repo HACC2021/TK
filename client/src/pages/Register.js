@@ -52,7 +52,7 @@ import React from 'react';
      },
      validate,
      onSubmit: values => {
-       alert(JSON.stringify(values, null, 2));
+       
      },
    });
    return (
@@ -66,6 +66,7 @@ import React from 'react';
                 type="email"
                 onChange={formik.handleChange}
                 value={formik.values.email}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
@@ -76,6 +77,7 @@ import React from 'react';
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.username}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.username ? <div>{formik.errors.username}</div> : null}
 
@@ -86,6 +88,7 @@ import React from 'react';
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.firstName}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
         
@@ -96,6 +99,7 @@ import React from 'react';
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.lastName}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
 
@@ -106,6 +110,7 @@ import React from 'react';
                 type="password"
                 onChange={formik.handleChange}
                 value={formik.values.password}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
@@ -116,6 +121,7 @@ import React from 'react';
                 type="password"
                 onChange={formik.handleChange}
                 value={formik.values.confirmPassword}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
         

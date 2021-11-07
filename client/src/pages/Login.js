@@ -38,6 +38,7 @@ import React from 'react';
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.username}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.username ? <div>{formik.errors.username}</div> : null}
 
@@ -48,6 +49,7 @@ import React from 'react';
                 type="password"
                 onChange={formik.handleChange}
                 value={formik.values.password}
+                onBlur={formik.handleBlur}
             />
             {formik.errors.password ? <div>{formik.errors.password}</div> : null}
         
