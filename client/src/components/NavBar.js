@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { Icon } from '@iconify/react/';
@@ -14,23 +15,23 @@ function NavBar() {
 
     return (
         <Navbar className="navbar">
-            <Navbar.Brand className="navbar-brand" href="/">Mālama Trails</Navbar.Brand>
+            <Navbar.Brand className="navbar-brand"><Link to='/'>Mālama Trails</Link></Navbar.Brand>
 
             <Navbar.Toggle />
             {isLoggedIn ? 
             <Navbar.Collapse className="justify-content-end">
-                <Nav.Link className="navbar-item">
-                    <Icon icon="iconoir:profile-circled" />
-                </Nav.Link>
+                <Nav.Item className="navbar-item">
+                    <Link to='/profile'><Icon icon="iconoir:profile-circled" /></Link>
+                </Nav.Item>
                 <Nav.Item className="navbar-item">
                     <button onClick={logoutHandler}>Logout</button>
                 </Nav.Item>
             </Navbar.Collapse>
             :
             <Navbar.Collapse className="justify-content-end">
-                <Nav.Link className="navbar-item" href="/login">
-                    Login
-                </Nav.Link>
+                <Nav.Item className="navbar-item">
+                    <Link to='/login'>Login</Link>
+                </Nav.Item>
             </Navbar.Collapse>
             }
         </Navbar>

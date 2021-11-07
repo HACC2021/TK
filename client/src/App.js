@@ -1,11 +1,13 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import ProtectedRoute from './components/ProtectedRoute';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 
 function App() {
+
   return (
     <Router>
       <div className="App">
@@ -14,7 +16,9 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/profile" component={Profile} />
+          <ProtectedRoute path="/profile" component={Profile} />
+
+          <Route path='*'><Redirect to='/' /></Route>
         </Switch>
       </div>
     </Router>
