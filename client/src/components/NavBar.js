@@ -8,6 +8,9 @@ function NavBar() {
 
     const authCtx = useContext(AuthContext);
     const isLoggedIn = authCtx.isLoggedIn;
+    const logoutHandler = () => {
+        authCtx.logout();
+    };
 
     return (
         <Navbar className="navbar">
@@ -20,7 +23,7 @@ function NavBar() {
                     <Icon icon="iconoir:profile-circled" />
                 </Nav.Link>
                 <Nav.Item className="navbar-item">
-                    Logout
+                    <button onClick={logoutHandler}>Logout</button>
                 </Nav.Item>
             </Navbar.Collapse>
             :

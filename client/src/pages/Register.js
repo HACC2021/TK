@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
- import { useFormik } from 'formik';
- import Container from 'react-bootstrap/Container';
- import Axios from 'axios';
- import AuthContext from '../store/auth-context';
- 
+import { useHistory } from 'react-router-dom';
+import { useFormik } from 'formik';
+import Container from 'react-bootstrap/Container';
+import Axios from 'axios';
+import AuthContext from '../store/auth-context';
+
  const validate = values => {
    const errors = {};
 
@@ -45,6 +46,7 @@ import React, { useContext } from 'react';
  function Register() {
 
   const authCtx = useContext(AuthContext);
+  const history = useHistory();
 
    const formik = useFormik({
      initialValues: {
@@ -60,6 +62,7 @@ import React, { useContext } from 'react';
       Axios.post('http://localhost:5000/users/register', {username: values.username, email: values.email, password: values.password, firstName: values.firstName, lastName: values.lastName })
       .then(response => {
         authCtx.login(response.data.token);
+        history.replace('/profile');
       })
       .catch(error => {
           console.log(error);

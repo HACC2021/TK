@@ -34,7 +34,7 @@ import AuthContext from '../store/auth-context';
        Axios.post('http://localhost:5000/users/login', {username: values.username, password: values.password})
        .then(response => {
         authCtx.login(response.data.token);
-        history.push('/profile');
+        history.replace('/profile');
        })
        .catch(error => {
            console.log(error);
