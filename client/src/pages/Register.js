@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
  import { useFormik } from 'formik';
  import Container from 'react-bootstrap/Container';
+ import Axios from 'axios';
+ import AuthContext from '../store/auth-context';
  
  const validate = values => {
    const errors = {};
@@ -41,6 +43,9 @@ import React from 'react';
  };
  
  function Register() {
+
+  const authCtx = useContext(AuthContext);
+
    const formik = useFormik({
      initialValues: {
        email: '',
@@ -52,8 +57,14 @@ import React from 'react';
      },
      validate,
      onSubmit: values => {
-       
-     },
+      Axios.post('http://localhost:5000/users/register', {username: values.username, email: values.email, password: values.password, firstName: values.firstName, lastName: values.lastName })
+      .then(response => {
+        authCtx.login(response.data.token);
+      })
+      .catch(error => {
+          console.log(error);
+      });
+    },
    });
    return (
        <Container>

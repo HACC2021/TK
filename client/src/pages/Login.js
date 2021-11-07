@@ -1,7 +1,9 @@
-import React from 'react';
- import { useFormik } from 'formik';
- import Container from 'react-bootstrap/Container';
- import Axios from 'axios';
+import React, { useContext } from 'react';
+import { useFormik } from 'formik';
+import Container from 'react-bootstrap/Container';
+import Axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import AuthContext from '../store/auth-context';
 
  const validate = values => {
    const errors = {};
@@ -18,6 +20,10 @@ import React from 'react';
  };
  
  function Login() {
+
+    const authCtx = useContext(AuthContext);
+    const history = useHistory();
+
    const formik = useFormik({
      initialValues: {
        username: '',
@@ -25,8 +31,13 @@ import React from 'react';
      },
      validate,
      onSubmit: values => {
-       Axios.post('http://localhost:5000/users/login', {username: values.username, password: values.password}).then(response => {
-        console.log(response);
+       Axios.post('http://localhost:5000/users/login', {username: values.username, password: values.password})
+       .then(response => {
+        authCtx.login(response.data.token);
+        history.push('/profile');
+       })
+       .catch(error => {
+           console.log(error);
        });
      },
    });
