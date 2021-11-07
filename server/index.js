@@ -38,6 +38,3 @@ app.use(notFound);
 app.use(errorHandler);
 
 
-app.get( '/api',(req, res) => {
-    res.send("Hello")
-});
