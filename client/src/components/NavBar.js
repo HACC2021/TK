@@ -14,17 +14,22 @@ function NavBar() {
             <Navbar.Brand className="navbar-brand" href="/">Mālama Trails</Navbar.Brand>
 
             <Navbar.Toggle />
+            {isLoggedIn ? 
             <Navbar.Collapse className="justify-content-end">
-                {isLoggedIn ? 
                 <Nav.Link className="navbar-item">
                     <Icon icon="iconoir:profile-circled" />
                 </Nav.Link>
-                :
+                <Nav.Item className="navbar-item">
+                    Logout
+                </Nav.Item>
+            </Navbar.Collapse>
+            :
+            <Navbar.Collapse className="justify-content-end">
                 <Nav.Link className="navbar-item" href="/login">
                     Login
                 </Nav.Link>
-                }
             </Navbar.Collapse>
+            }
         </Navbar>
     )
 }
