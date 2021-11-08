@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
+import { addListener } from 'nodemon';
 
 const trailSchema = mongoose.Schema({
-    title: String,                  //name of trail
+    name: String,                  //name of trail
     description: String,            //description of trail
     tags: [String],                 //tags: difficulty, kid-friendly, pet-friendly, etc
     images: [String],               //images of trail
@@ -9,6 +10,7 @@ const trailSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    coordinates: 
     createdAt: {                
         type: Date,
         default: new Date()
