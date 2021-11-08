@@ -1,5 +1,15 @@
-import mongoose from 'mongoose';
-import { addListener } from 'nodemon';
+import mongoose, { Schema } from 'mongoose';
+
+const GeoSchema = new Schema({
+    type: {
+        type: String,
+        default: "Point"
+    },
+    coordinates: {
+        type: [Number],
+        index: "2dsphere"
+    }
+});
 
 const trailSchema = mongoose.Schema({
     name: String,                  //name of trail
@@ -10,7 +20,7 @@ const trailSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    coordinates: 
+    coordinates: GeoSchema,
     createdAt: {                
         type: Date,
         default: new Date()
