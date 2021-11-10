@@ -2,33 +2,42 @@ import React, { useContext, useState, useEffect } from 'react';
 import Axios from 'axios';
 import AuthContext from '../store/auth-context';
 import Spinner from 'react-bootstrap/Spinner';
+import Container from 'react-bootstrap/Container';
 
 function Profile() {
 
     const authCtx = useContext(AuthContext);
-    const [isLoading, setLoading] = useState(true);
-
+    const [data, setData] = useState(null);
     async function getData() {
         const { data } = await Axios.post('http://localhost:5000/users/profile', {},
         { headers: {
             'authorization': `Bearer ${authCtx.token}`,
         }});
-        setLoading(false);
-        console.log(data);
+        setData(data);
     }
 
     useEffect(() => {
         getData();
     }, )
 
+
     return (
         <div>
-            {isLoading ? 
+            {data==null ? 
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             :
-                null
+                <Container>
+                    <div>
+                        <h4>{data.username}</h4>
+                        <div>
+                            <h5>First name: {data.firstName == null ? data.firstName :'n/a'}</h5>
+                            <h5>Last name: {data.lastName == null ? data.lastName :'n/a'}</h5>
+                            <h5>Email: {data.email}</h5>
+                        </div>
+                    </div>
+                </Container>
             }
         </div>
     )
