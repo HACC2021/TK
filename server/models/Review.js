@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const reviewSchema = mongoose.Schema({
     trailSlug: String,
-    userId: Number,
+    userId: String,
     rating: Number,
     review: String,
     createdAt: {
