@@ -13,7 +13,7 @@ function Profile() {
         { headers: {
             'authorization': `Bearer ${authCtx.token}`,
         }});
-
+        setLoading(false);
         console.log(data);
     }
 
