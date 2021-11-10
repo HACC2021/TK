@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
 import Container from 'react-bootstrap/Container'
 import Spinner from 'react-bootstrap/Spinner';
+import Reviews from '../components/Reviews';
 
 function TrailDetails({ match }) {
     const [data, setData] = useState(null);
@@ -16,7 +17,6 @@ function TrailDetails({ match }) {
             async function getData() {
                 const {data} = await Axios.get('http://localhost:5000/trails/' + match.params.trailName);
                 setData(data);
-                console.log(data);
             }
         
         getData();
@@ -46,6 +46,9 @@ function TrailDetails({ match }) {
 
                 </Container>
             }
+            <Container>
+                <Reviews slugName={match.params.trailName}/>
+            </Container>
         </div>
     )
 }
