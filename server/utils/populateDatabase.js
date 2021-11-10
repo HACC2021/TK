@@ -5,6 +5,7 @@ import User from '../models/User.js';
 import { nameToSlug } from './nameToSlug.js';
 import { parseTags } from './parseTags.js';
 import Review from '../models/Review.js';
+import Traffic from '../models/Traffic.js';
 
 export async function populateTrailsDatabase() {
     const trailsLength = await Trail.count();
@@ -61,6 +62,24 @@ export async function populateReviewsDatabase() {
             review: faker.lorem.paragraph()
         });
         reviewsCount++;
+    }
+}
+
+export async function populateTrafficDatabase() {
+    const trails = await Trail.find();
+    const trafficLength = await Traffic.count();
+
+    if (trafficLength === 0) {
+        trails.forEach(trail => {
+            const traffic = [];
+            for (let i = 0; i < 12; i++) {
+                traffic.push(Math.floor((Math.random() * 3) + 1));
+            }
+            Traffic.create({
+                trailSlug: trail.slugName,
+                traffic
+            })
+        });
     }
 }
 

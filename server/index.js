@@ -4,7 +4,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
-import { populateReviewsDatabase, populateTrailsDatabase, populateUsersDatabase } from './utils/populateDatabase.js';
+import { populateReviewsDatabase, populateTrafficDatabase, populateTrailsDatabase, populateUsersDatabase } from './utils/populateDatabase.js';
 import usersRoutes from './routes/userRoutes.js';
 import trailRoutes from './routes/trailRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
@@ -36,6 +36,7 @@ db.once('open', () => {
 await populateTrailsDatabase();
 await populateUsersDatabase();
 await populateReviewsDatabase();
+await populateTrafficDatabase();
 
 app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV} mode on ${PORT}`));
 

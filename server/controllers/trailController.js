@@ -1,6 +1,7 @@
 import e from "express";
 import asyncHandler from "express-async-handler";
 import Trail from '../models/Trail.js';
+import Traffic from '../models/Traffic.js';
 import { nameToSlug } from "../utils/nameToSlug.js";
 
 //@route    POST /trails/new
@@ -61,4 +62,14 @@ const getTrail = asyncHandler(async (req, res) => {
     }
 });
 
-export {getAllTrails, newTrail, getTrail};
+//@route    GET /trails/traffic/:slugname
+//@desc     Get traffic of specified trail
+//@access   Public
+const getTraffic = asyncHandler(async (req, res) => {
+    const traffic = await Traffic.findOne({trailSlug: req.params.slugname});
+    if (traffic) {
+        res.json(traffic);
+    }
+});
+
+export {getAllTrails, newTrail, getTrail, getTraffic};
