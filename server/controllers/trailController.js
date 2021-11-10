@@ -2,6 +2,9 @@ import asyncHandler from "express-async-handler";
 import Trail from '../models/Trail.js';
 import { nameToSlug } from "../utils/nameToSlug.js";
 
+//@route    POST /trails/new
+//@desc     Createes a new trail
+//@access   Private
 const newTrail = asyncHandler(async (req, res) => {
     const {name, description, tags, coordinates} = req.body;
 
@@ -37,6 +40,9 @@ const newTrail = asyncHandler(async (req, res) => {
     }
 });
 
+//@route    GET /trails/all
+//@desc     Get all trails
+//@access   Public
 const getAllTrails = asyncHandler(async (req, res) => {
     const trails = await Trail.find();
     console.log(trails);
