@@ -7,6 +7,7 @@ import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 import { populateDatabase } from './utils/populateDatabase.js';
 import usersRoutes from './routes/userRoutes.js';
 import trailRoutes from './routes/trailRoutes.js';
+import reviewRoutes from './routes/reviewRoutes.js';
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV}
 
 app.use('/users', usersRoutes);
 app.use('/trails', trailRoutes);
+app.use('/reviews', reviewRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
