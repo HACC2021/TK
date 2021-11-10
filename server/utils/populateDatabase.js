@@ -4,7 +4,7 @@ import User from '../models/User.js';
 import { nameToSlug } from './nameToSlug.js';
 import { parseTags } from './parseTags.js';
 
-export async function populateDatabaseTrails() {
+export async function populateTrailsDatabase() {
     const hasData = await Trail.find();
     if (hasData.length === 0) {
         const data = JSON.parse(fs.readFileSync("/app/utils/trailData.geojson", "utf-8"));
@@ -12,7 +12,7 @@ export async function populateDatabaseTrails() {
             const name = trail.properties.trailname;
             const slugName = nameToSlug(name);
             const tags = parseTags(trail.properties.features);
-            Trail.create({
+            await Trail.create({
                 name,
                 slugName,
                 description: trail.properties.comments,
@@ -22,6 +22,14 @@ export async function populateDatabaseTrails() {
     }
 }
 
-export async function populateDatabaseUsers() {
-    const hasUser = await User.find({username: "username"});
+export async function populateUsersDatabase() {
+    const hasUser = await User.findOne({username: "username"});
+
+    if (!hasUser) {
+        await User.create({
+            username: "username",
+            email: "email@gmail.com",
+            password: "password"
+        });
+    }
 }
