@@ -6,6 +6,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
+import TrailDetails from './pages/TrailDetails';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <UnprotectedRoute path="/login" component={Login} />
           <UnprotectedRoute path="/register" component={Register} />
           <ProtectedRoute path="/profile" component={Profile} />
+          <Route path="/details/:trailName" component={TrailDetails} />
 
           <Route path='*'><Redirect to='/' /></Route>
         </Switch>
