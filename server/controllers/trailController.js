@@ -1,3 +1,4 @@
+import e from "express";
 import asyncHandler from "express-async-handler";
 import Trail from '../models/Trail.js';
 import { nameToSlug } from "../utils/nameToSlug.js";
@@ -49,4 +50,15 @@ const getAllTrails = asyncHandler(async (req, res) => {
     res.json(trails);
 });
 
-export {getAllTrails, newTrail};
+//@route    GET /trails/:slugname
+//@desc     Get details of specified trail
+//@access   Public
+const getTrail = asyncHandler(async (req, res) => {
+    const trail = await Trail.findOne({slugName: req.params.slugname});
+    console.log(trail);
+    if (trail) {
+        res.json(trail);
+    }
+});
+
+export {getAllTrails, newTrail, getTrail};
