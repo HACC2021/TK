@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import usersRoutes from './routes/userRoutes.js';
 import dotenv from 'dotenv';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
+import { populateDatabase } from './utils/populateDatabase.js';
 
 dotenv.config();
 
@@ -29,6 +30,8 @@ const db = mongoose.connection;
 db.once('open', () => {
 	console.log("Connected to MongoDB database...");
 });
+
+populateDatabase();
 
 app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV} mode on ${PORT}`));
 
