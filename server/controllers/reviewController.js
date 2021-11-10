@@ -45,4 +45,16 @@ const getReviews = asyncHandler(async (req, res) => {
 
     }});
 
-export { createReview, getReviews }; 
+    const getAllReviews = asyncHandler(async (req, res) => {
+        const reviews = await Review.find();
+    
+        if (reviews) {
+            res.json(reviews);
+        // } else {
+        //     res.status(404);
+        //     throw new Error("Reviews not found based on given trail.");
+        // }
+    
+        }});
+
+export { createReview, getReviews, getAllReviews }; 
