@@ -2,10 +2,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import usersRoutes from './routes/userRoutes.js';
 import dotenv from 'dotenv';
+
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 import { populateDatabase } from './utils/populateDatabase.js';
+
+import usersRoutes from './routes/userRoutes.js';
+import trailRoutes from './routes/trailRoutes.js';
 
 dotenv.config();
 
@@ -36,6 +39,7 @@ populateDatabase();
 app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV} mode on ${PORT}`));
 
 app.use('/users', usersRoutes);
+app.use('/trails', trailRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
