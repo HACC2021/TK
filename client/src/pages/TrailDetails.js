@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container';
 import Spinner from 'react-bootstrap/Spinner';
 import Reviews from '../components/Reviews';
 

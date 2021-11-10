@@ -1,16 +1,32 @@
 import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner';
+import { Link } from 'react-router-dom';
 
-function TrailsInfoCard() {
+
+function TrailsInfoCard({data}) {
     return (
-        <Card className="trails-info-card">
-            <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <div>
+        {data != null ?
+            data.map(trail => {
+                const route = '/details/' + trail.slugName;
+                return(
+                    <Link to={route}>
+                        <Card className="trails-info-card">
+                            <Card.Body>
+                                <Card.Title>{trail.name}</Card.Title>
+                                <Card.Text>
+                                {trail.description}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+            )})
+        :
+            <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        }
+        </div>
     )
 }
 
