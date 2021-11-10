@@ -3,10 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 import { populateDatabase } from './utils/populateDatabase.js';
-
 import usersRoutes from './routes/userRoutes.js';
 import trailRoutes from './routes/trailRoutes.js';
 
@@ -34,7 +32,7 @@ db.once('open', () => {
 	console.log("Connected to MongoDB database...");
 });
 
-populateDatabase();
+await populateDatabase();
 
 app.listen(PORT, () => console.log(`Server is running in ${process.env.NODE_ENV} mode on ${PORT}`));
 

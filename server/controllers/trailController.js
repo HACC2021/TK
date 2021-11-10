@@ -1,13 +1,6 @@
 import asyncHandler from "express-async-handler";
 import Trail from '../models/Trail.js';
-
-//Function that converts given text into a slug text
-function nameToSlug(Text) {
-    return Text
-    .toLowerCase()
-    .replace(/[^\w ]+/g, '')
-    .replace(/ +/g, '-');
-}
+import { nameToSlug } from "../utils/nameToSlug.js";
 
 const newTrail = asyncHandler(async (req, res) => {
     const {name, description, tags, coordinates} = req.body;
