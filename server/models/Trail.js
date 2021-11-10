@@ -1,18 +1,9 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
-const GeoSchema = new Schema({
-    type: {
-        type: String,
-        default: "Point"
-    },
-    coordinates: {
-        type: [Number],
-        index: "2dsphere"
-    }
-});
 
 const trailSchema = mongoose.Schema({
     name: String,                  //name of trail
+    slugName: String,               //slug name for URL and searching
     description: String,            //description of trail
     tags: [String],                 //tags: difficulty, kid-friendly, pet-friendly, etc
     images: [String],               //images of trail
@@ -20,7 +11,7 @@ const trailSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
-    coordinates: GeoSchema,
+    coordinates: [Number],
     createdAt: {                
         type: Date,
         default: new Date()
