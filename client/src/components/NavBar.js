@@ -16,6 +16,9 @@ function NavBar() {
     return (
         <Navbar className="navbar">
             <Navbar.Brand className="navbar-brand"><Link to='/'>Mālama Trails</Link></Navbar.Brand>
+            <Nav.Item className="navbar-item">
+                <Link to='/trails'>Explore</Link>
+            </Nav.Item>
 
             <Navbar.Toggle />
             {isLoggedIn ? 
