@@ -74,7 +74,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
         currUser.email = req.body.email || currUser.email;
         if (req.body.password) currUser.password = req.body.password;
 
-        const updatedUser = await user.save();
+        const updatedUser = await currUser.save();
 
         res.json({
             _id: updatedUser._id,

@@ -8,7 +8,7 @@ function Profile() {
     const authCtx = useContext(AuthContext);
     const [isLoading, setLoading] = useState(true);
 
-    const getData = async () => {
+    async function getData() {
         const { data } = await Axios.post('http://localhost:5000/users/profile', {},
         { headers: {
             'authorization': `Bearer ${authCtx.token}`,
