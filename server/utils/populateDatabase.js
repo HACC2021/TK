@@ -1,4 +1,5 @@
 import fs from 'fs';
+import faker from 'faker';
 import Trail from '../models/Trail.js';
 import User from '../models/User.js';
 import { nameToSlug } from './nameToSlug.js';
@@ -31,5 +32,17 @@ export async function populateUsersDatabase() {
             email: "email@gmail.com",
             password: "password"
         });
+    }
+
+    const users = await User.find();
+    let length = users.length;
+
+    while (length < 20) {
+        await User.create({
+            username: `${faker.name.firstName()}${faker.name.lastName()}`,
+            email: faker.internet.email(),
+            password: "password"
+        });
+        length++;
     }
 }
