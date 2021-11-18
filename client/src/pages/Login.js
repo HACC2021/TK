@@ -44,6 +44,7 @@ function Login() {
   });
   return (
     <div className='login'>
+      <h2>Login</h2>
       <div className='login-container'>
         <form onSubmit={formik.handleSubmit}>
           <div className='input-container'>

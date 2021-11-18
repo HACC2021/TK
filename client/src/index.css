@@ -84,12 +84,20 @@ body {
 
 /* LOGIN PAGE */
 .login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 35%;
+  top: 27%;
   right: 0;
   left: 0;
-  text-align: left;
   vertical-align: middle;
+}
+
+.login h2,
+.register h2 {
+  color: var(--secondary-color);
 }
 
 .login-container {
@@ -101,7 +109,7 @@ body {
   margin: 0 40%;
   height: 40%;
   border-radius: 15px;
-  box-shadow: 0px 0px 5px #5c5c5c;
+  box-shadow: 0px 0px 6px #888888;
 }
 
 .login-container form {
@@ -111,6 +119,8 @@ body {
 
 .login-container p {
   color: var(--secondary-color);
+  margin: 0 2rem;
+  padding-bottom: 1rem;
 }
 
 .input-container {
@@ -143,17 +153,35 @@ body {
 }
 
 .login-btn {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  border: 3px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  border: none;
   margin-top: 2rem;
   padding: 0.8rem;
   border-radius: 7px;
-  transition: all 0.3s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .login-btn:hover {
-  background-color: #b5ebb0;
-  color: #8a7c79;
-  border-color: #8a7c79;
+  background-color: #887a75;
+  color: #cbcbcb;
+}
+
+.login-btn:active {
+  background-color: #5b504c;
+  color: #767676;
+}
+
+/* REGISTER PAGE */
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 18%;
+  right: 0;
+  left: 0;
+  text-align: left;
+  vertical-align: middle;
 }
