@@ -49,8 +49,8 @@ export async function populateUsersDatabase() {
 }
 
 export async function populateReviewsDatabase() {
-    const user = await getRandomUser();
-    const trail = await getRandomTrail();
+    let user = await getRandomUser();
+    let trail = await getRandomTrail();
 
     let reviewsCount = await Review.count();
 
@@ -61,6 +61,8 @@ export async function populateReviewsDatabase() {
             rating: Math.floor((Math.random() * 5) + 1),
             review: faker.lorem.paragraph()
         });
+        user = await getRandomUser();
+        trail = await getRandomTrail();
         reviewsCount++;
     }
 }
